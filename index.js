@@ -16,7 +16,9 @@ const authenticateAdmin = (req, res, next) => {
     }
   };
 
-
+app.use("/",(req,res)=>{
+    res.send("welcome here")
+})
 
 app.post('/', authenticateAdmin, async(req, res) => {
   const {userName, password, selected}= req.body;
