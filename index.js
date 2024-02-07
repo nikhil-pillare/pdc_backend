@@ -10,7 +10,7 @@ app.use(cors())
 const authenticateAdmin = (req, res, next) => {
     const { userName, password } = req.body;
   
-    if(userName === password ){  //hardcoded usename and password for simplicity
+    if(userName === "admin" && password=="admin" ){  //hardcoded usename and password for simplicity
       next();
     } else{
       res.status(401).json({error: 'authentication failure'});
@@ -21,7 +21,7 @@ app.use("/",(req,res)=>{
     res.send("welcome here")
 })
 
-app.post('/', authenticateAdmin, async(req, res) => {
+app.post('/add', authenticateAdmin, async(req, res) => {
   const {userName, password, selected}= req.body;
 
   try {
