@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 const userModel = require('./models/userModel')
+const cors = require('cors')
 require('dotenv').config()
 
 app.use(express.json())
-
+app.use(cors())
 const authenticateAdmin = (req, res, next) => {
     const { userName, password } = req.body;
   
