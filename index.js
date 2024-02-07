@@ -8,16 +8,16 @@ require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 const authenticateAdmin = (req, res, next) => {
-    const { userName, password } = req.body;
+    const { userName, password, selected } = req.body;
   
-    if(userName === "admin" && password=="admin" ){  //hardcoded usename and password for simplicity
+    if(userName === password ){  //hardcoded usename and password for simplicity
       next();
     } else{
       res.status(401).json({error: 'authentication failure'});
     }
   };
 
-app.use("/",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("welcome here")
 })
 
